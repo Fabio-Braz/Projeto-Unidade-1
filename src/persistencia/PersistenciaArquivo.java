@@ -96,31 +96,4 @@ List<Cliente> ArrayClientes = new ArrayList<>();
 	public String toString() {
 		return "PersistenciaArquivo [Clientes=" + ArrayClientes + "]";
 	}
-	
-	public Cliente listarContasPeloCPF(String cpf) throws Exception
-	{
-		Cliente temp = new Cliente(cpf);
-		
-		if(ArrayClientes.contains(temp)) {
-			int index = ArrayClientes.indexOf(temp);
-			temp = ArrayClientes.get(index);
-			return temp;
-		}
-		else
-			throw new Exception("O cliente não existe na lista!");
-	}
-	
-	public Cliente adicionarOutrasContas(String cpf) throws Exception
-	{
-		Cliente temp = new Cliente(cpf);
-		
-		if(ArrayClientes.contains(temp)) {
-			int index = ArrayClientes.indexOf(temp);
-			temp = ArrayClientes.get(index);
-			return temp;
-		}
-		else
-			throw new Exception("O cliente não existe na lista!");
-	}
-	
 }

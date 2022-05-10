@@ -67,7 +67,7 @@ public class Programa {
 					String cpf_cliente = pergunta.next();
 					System.out.println("Digite agora o NÚMERO da nova conta que deseja adicionar: ");
 					try {
-						persistencia.adicionarOutrasContas(cpf_cliente).adicionarConta(new Conta(pergunta.next()));
+						persistencia.localizarClienteCPF(cpf_cliente).adicionarConta(new Conta(pergunta.next()));
 						persistencia.salvarDados();
 						System.out.println("Você adicionou uma nova conta com sucesso!");
 					}
@@ -101,6 +101,7 @@ public class Programa {
 					try {		
 						persistencia.localizarClienteCPF(cpf_saque).localizarConta(conta_saque).realizarSaque(cpf_saque, valor_de_saque);
 						persistencia.salvarDados();
+						System.out.println("Saque realizado com sucesso!");
 					}catch(Exception e){
 						System.out.println(e.getMessage());
 					}
@@ -113,7 +114,7 @@ public class Programa {
 					System.out.println("Digite o número da sua CONTA:");
 					Conta conta_saldo = new Conta(pergunta.next());
 					System.out.println("Saldo disponível:");
-					System.out.println(persistencia.listarContasPeloCPF(cpf_saldo).mostrarSaldo(conta_saldo));
+					System.out.println(persistencia.localizarClienteCPF(cpf_saldo).mostrarSaldo(conta_saldo));
 					
 					} catch(Exception e){
 						System.err.println(e.getMessage());
@@ -185,66 +186,3 @@ public class Programa {
 			}
 	}
 }
-		/*
-		// CADASTRO DO CLIENTE E ASSOCIAÇÃO A CONTA!
-				Cliente cliente1 = new Cliente("001" , "Fábio");
-				Conta conta1 = new Conta("123A");
-				conta1.adicionarSaldo(200f);
-				cliente1.adicionarConta(conta1);
-				
-				Cliente cliente2 = new Cliente("002" , "Maria");
-				Conta conta2 = new Conta("456A");
-				conta2.adicionarSaldo(1500f);
-				cliente2.adicionarConta(conta2);
-				
-				Cliente cliente3 = new Cliente("003" , "João");
-				Conta conta3 = new Conta("897A");
-				cliente3.adicionarConta(conta3);
-				
-				
-				PersistenciaArquivo p1 = new PersistenciaArquivo();
-				try {
-					p1.adicionarCliente(cliente1);
-					p1.adicionarCliente(cliente2);
-					p1.adicionarCliente(cliente3);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					System.out.println(e.getMessage());
-				}
-				
-				// Foreach mostrando clientes!
-				for(Cliente c : p1.listarClientes()) {
-					System.out.println(c);
-				}
-				
-				// Método para procurar clientes dentro dos dados!
-				// Funciona > System.out.println(p1.localizarClienteCPF("001"));
-				
-				// Método remover cliente
-				p1.removerClienteCPF("001");
-				
-				System.out.println();
-				
-				// Foreach mostrando clientes após remoção!
-						for(Cliente c : p1.listarClientes()) {
-							System.out.println(c);
-						}
-						
-				System.out.println();
-				
-				//Cliente temp = p1.localizarClienteCPF("002");
-				//
-				//System.out.println(temp.listarContas());
-				
-				//System.out.println(p1.localizarClienteCPF("002").listarContas());
-				Conta cacas = new Conta("PORRAsds");
-				
-				System.out.println(p1.listarContasPeloCPF("002").listarContas());
-				p1.listarContasPeloCPF("002").adicionarConta(cacas);
-				
-				System.out.println(p1.listarContasPeloCPF("002").listarContas());
-			
-				System.out.println(p1.listarContasPeloCPF("002").mostrarSaldo(conta2));
-	}
-}
-				*/

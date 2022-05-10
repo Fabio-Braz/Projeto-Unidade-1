@@ -83,14 +83,6 @@ public class Cliente implements Serializable {
 		return this.cpf;
 	}
 	
-	public boolean contaExistente(Conta c) {
-		if(Contas.contains(c)) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(cpf);
