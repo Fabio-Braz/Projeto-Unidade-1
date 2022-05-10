@@ -64,7 +64,7 @@ List<Cliente> ArrayClientes = new ArrayList<>();
 	}
 	
 	// Método salvar Clientes
-	private void salvarDados() {
+	public void salvarDados() {
 		try {
 			FileOutputStream fos = new FileOutputStream("dados");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -77,7 +77,7 @@ List<Cliente> ArrayClientes = new ArrayList<>();
 	
 	
 	// Método carregar Clientes
-	private void carregarDados() {
+	public void carregarDados() {
 
 		try 
 		{
@@ -110,7 +110,7 @@ List<Cliente> ArrayClientes = new ArrayList<>();
 			throw new Exception("O cliente não existe na lista!");
 	}
 	
-	public Cliente adicinoarOutrasContas(String cpf) throws Exception
+	public Cliente adicionarOutrasContas(String cpf) throws Exception
 	{
 		Cliente temp = new Cliente(cpf);
 		
@@ -122,4 +122,5 @@ List<Cliente> ArrayClientes = new ArrayList<>();
 		else
 			throw new Exception("O cliente não existe na lista!");
 	}
+	
 }

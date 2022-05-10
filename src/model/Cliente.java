@@ -7,14 +7,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+
 public class Cliente implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String cpf;
-	String nome;
+	private String cpf;
+	private String nome;
 	
 	private List<Conta> Contas = new ArrayList<>();
 	
@@ -26,39 +27,44 @@ public class Cliente implements Serializable {
 		this.cpf = cpf;
 	}
 	
-	public Cliente(String cpf, String nome) {
+	public Cliente(String nome, String cpf) {
 		this.cpf = cpf;
 		this.nome = nome;
 	}
-	
-	
+
 	// Listar contas
-	public List<Conta> listarContas() {
+	public List<Conta> listarContas(){
 		return Contas;
 	}
 	
-	
-	
-	public void adicionarConta(Conta c){
+	public float mostrarSaldo(Conta c) throws Exception {
 		if(Contas.contains(c)) {
-			System.out.println("Conta já cadastrada!");
+			return c.saldoDeInstancia();
+		}
+		else {
+			throw new Exception("Conta inexistente!");
+		}
+	}
+	
+	public void adicionarConta(Conta c) throws Exception {
+		if(Contas.contains(c)) {
+			throw new Exception("Conta já registrada!");
 		}
 		else {
 			Contas.add(c);
 		}
 	}
 	
-	public void removerConta(Conta c) {
+	public void removerConta(Conta c) throws Exception{
 		if(Contas.contains(c)) {
 			Contas.remove(c);
 		}
 		else {
-			System.err.println("Conta inexistente!");
+			throw new Exception("Conta inexistente!");
 		}
 	}
-
 	
-	public Conta localizarConta(String c) {
+	public Conta localizarConta(String c) throws Exception{
 		Conta temp = new Conta(c);
 		if(Contas.contains(temp))
 		{
@@ -67,9 +73,14 @@ public class Cliente implements Serializable {
 			return temp;
 		}
 		else {
-			return null;
+			throw new Exception("Conta inexistente!");
 		
 		}
+	}
+	
+	
+	public String retornoCpfCliente(){
+		return this.cpf;
 	}
 	
 	public boolean contaExistente(Conta c) {
@@ -99,8 +110,8 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Cliente [cpf=" + cpf + ", nome=" + nome + ", ArraydeContas="
-				+ Contas + "]";
+		return "Cliente = Nome: " + nome + " | CPF: " + cpf + "\nContas:\n"
+				+ Contas;
 	}
 	
 	

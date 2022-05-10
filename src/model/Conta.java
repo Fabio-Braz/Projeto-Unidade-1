@@ -28,8 +28,32 @@ public class Conta implements Serializable {
 		
 	}
 	
-	public void adicionarSaldo(float quantia) {
-		this.saldo = quantia;
+	public void realizarDeposito(String c, float dinheiro) throws Exception {
+		if(this.status == true && dinheiro > 0) {
+			this.saldo += dinheiro;
+			}
+		else if(dinheiro <= 0) {
+			throw new Exception("O valor inserido não é válido!");	
+			}
+		else {
+			throw new Exception("A conta inserida não é válida!");
+		}
+	}
+	
+	public void realizarSaque(String c, float dinheiro) throws Exception {
+		if(this.status == true && dinheiro <= this.saldo) {
+			this.saldo -= dinheiro;
+			}
+		else if(dinheiro > 0) {
+			throw new Exception("O valor inserido não é válido!");	
+			}
+		else {
+			throw new Exception("A conta inserida não é válida!");
+		}
+	}
+	
+	public float saldoDeInstancia() {
+		return this.saldo;
 	}
 	
 	@Override
@@ -49,8 +73,8 @@ public class Conta implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Conta [numConta=" + numConta + ", saldo=" + saldo + ", status=" + status + ", dataAbertura="
-				+ dataAbertura + "]";
+		return "\nConta: " + numConta + ", Saldo: " + saldo + ", Status: " + status + ", Data de Abertura: "
+				+ dataAbertura + "\n";
 	}
 
 }
