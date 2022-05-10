@@ -15,7 +15,7 @@ public class Programa {
 				System.out.println("__________________________________________________________");
 				System.out.println("Digite um número de acordo com sua necessidade:\n");
 				System.out.println("Cadastrar cliente [1]:\n" +
-								   "Criar conta para o cliente [2]: \n" +
+								   "Criar uma nova conta para o cliente [2]: \n" +
 								   "Realizar deposito [3]: \n" +
 								   "Realizar saque [4]: \n" +
 								   "Consultar Saldo [5]: \n" +
