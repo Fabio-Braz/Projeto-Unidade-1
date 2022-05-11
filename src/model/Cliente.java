@@ -37,15 +37,6 @@ public class Cliente implements Serializable {
 		return Contas;
 	}
 	
-	public float mostrarSaldo(Conta c) throws Exception {
-		if(Contas.contains(c)) {
-			return c.saldoDeInstancia();
-		}
-		else {
-			throw new Exception("Conta inexistente!");
-		}
-	}
-	
 	public void adicionarConta(Conta c) throws Exception {
 		if(Contas.contains(c)) {
 			throw new Exception("Conta já registrada!");

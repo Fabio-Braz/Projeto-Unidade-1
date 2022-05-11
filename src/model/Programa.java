@@ -112,9 +112,9 @@ public class Programa {
 					System.out.println("Digite seu CPF:");
 					String cpf_saldo = pergunta.next();
 					System.out.println("Digite o número da sua CONTA:");
-					Conta conta_saldo = new Conta(pergunta.next());
+					String conta_saldo = pergunta.next();
 					System.out.println("Saldo disponível:");
-					System.out.println(persistencia.localizarClienteCPF(cpf_saldo).mostrarSaldo(conta_saldo));
+					System.out.println(persistencia.localizarClienteCPF(cpf_saldo).localizarConta(conta_saldo).mostrarSaldo());
 					
 					} catch(Exception e){
 						System.err.println(e.getMessage());

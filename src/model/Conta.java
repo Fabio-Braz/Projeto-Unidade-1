@@ -52,7 +52,7 @@ public class Conta implements Serializable {
 		}
 	}
 	
-	public float saldoDeInstancia() {
+	public float mostrarSaldo() {
 		return this.saldo;
 	}
 	
